@@ -1,27 +1,16 @@
-# fluent-excel
+package com.magicwt.fluentexcel.demo.reader;
 
-## 功能说明
+import com.magicwt.fluentexcel.context.ExcelContext;
+import com.magicwt.fluentexcel.demo.model.Model;
+import com.magicwt.fluentexcel.handler.RowHandler;
+import com.magicwt.fluentexcel.reader.ExcelReader;
+import com.magicwt.fluentexcel.reader.ExcelReaderFactory;
+import java.util.Arrays;
+import java.util.List;
 
-* 支持流式读写Excel文件，节省内存使用
-* 支持Excel行记录和对象的相互转换
-
-## 写示例
-
-```
-public class SimpleWriter {
-
-  public static void main(String[] args) {
-    List<Model> dataList = Arrays.asList(new Model(1, "s1"), new Model(2, "s2"));
-    ExcelWriter excelWriter = ExcelWriterFactory.create("/Users/magicwt/test.xlsx");
-    excelWriter.write(dataList);
-    excelWriter.close();
-  }
-}
-```
-
-## 读示例
-
-```
+/**
+ * @author magicwt
+ */
 public class SimpleReader {
 
   static class SimpleRowHandler implements RowHandler {
@@ -52,6 +41,5 @@ public class SimpleReader {
     ExcelReader excelReader = ExcelReaderFactory.create("/Users/magicwt/test.xlsx");
     excelReader.read(new ExcelContext(), new SimpleRowHandler(), 1000, Arrays.asList(Model.class));
   }
-  
+
 }
-```
